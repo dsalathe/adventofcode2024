@@ -2,26 +2,21 @@
 Advent of Code 2024 - Day 19
 https://adventofcode.com/2024/day/19
 """
+from functools import cache
 
 def parse_input(input_data):
     """Parse the puzzle input."""
     lines = [line.strip() for line in input_data.split("\n") if line.strip()]
-    patterns = [p.strip() for p in lines[0].split(",")]
+    patterns = tuple([p.strip() for p in lines[0].split(",")])
     words = lines[1:]
     return patterns, words
 
-def count_combinations(word, patterns, memo=None):
-    if memo is None:
-        memo = {'' : 1}
-
-    if word in memo:
-        return memo[word]
-    
-    total_combinations = sum(count_combinations(word[len(pattern):], patterns, memo)
-                             for pattern in patterns if word.startswith(pattern))
-    
-    memo[word] = total_combinations
-    return total_combinations
+@cache
+def count_combinations(word, patterns):
+    if not word:
+        return 1
+    return sum(count_combinations(word[len(pattern):], patterns)
+               for pattern in patterns if word.startswith(pattern))
 
 def solve_part1(data):
     """Solve part 1 of the puzzle."""
