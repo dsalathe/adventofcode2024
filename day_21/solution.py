@@ -1,6 +1,6 @@
 """
-Advent of Code 2024 - Day 22
-https://adventofcode.com/2024/day/22
+Advent of Code 2024 - Day 21
+https://adventofcode.com/2024/day/21
 
 Important observations:
 1. we need to move as less as possible. So doing >>^^ would always be better

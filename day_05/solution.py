@@ -1,4 +1,8 @@
-from typing import List, Tuple, Dict, Set
+"""
+Advent of Code 2024 - Day 5
+https://adventofcode.com/2024/day/5
+"""
+from typing import List, Tuple
 from dataclasses import dataclass
 from collections import defaultdict
 
